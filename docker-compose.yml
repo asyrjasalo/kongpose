@@ -8,11 +8,6 @@ services:
         - POSTGRES_DB=kong
         volumes:
         - ./data/postgresql:/var/lib/postgresql/data
-        healthcheck:
-            test: "pg_isready -U kong && psql -d kong -U kong -c \"SELECT 1=1\""
-            interval: 10s
-            timeout: 5s
-            retries: 5
     kong:
         container_name: kong
         build:
@@ -36,7 +31,7 @@ services:
         - KONG_ADMIN_ERROR_LOG=/dev/stderr
         - KONG_ADMIN_LISTEN=0.0.0.0:8001
         - KONG_ADMIN_LISTEN_SSL=0.0.0.0:8444
-        command: ["./wait-for-it.sh", "kong-database:5432", "--", "kong", "start"]
+        command: ["./wait-for-it.sh", "kong-database:5432", "-t", "30", "--", "kong", "start"]
     kong-dashboard:
         container_name: kong-dashboard
         build:
