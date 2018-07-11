@@ -1,0 +1,61 @@
+version: '3'
+services:
+    kong-database:
+        container_name: kong-database
+        image: postgres:9.5
+        environment:
+        - POSTGRES_USER=kong
+        - POSTGRES_DB=kong
+        volumes:
+        - ./data/postgresql:/var/lib/postgresql/data
+        healthcheck:
+            test: "pg_isready -U kong && psql -d kong -U kong -c \"SELECT 1=1\""
+            interval: 10s
+            timeout: 5s
+            retries: 5
+    kong:
+        container_name: kong
+        build:
+            context: kong
+        links:
+        - kong-database:kong-database
+        depends_on:
+        - kong-database      
+        ports:
+        - "8000:8000"
+        - "8443:8443"
+        - "8001:8001"
+        - "8444:8444"
+        environment:
+        - KONG_DATABASE=postgres
+        - KONG_PG_HOST=kong-database
+        - KONG_LOG_LEVEL=debug
+        - KONG_PROXY_ACCESS_LOG=/dev/stdout
+        - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+        - KONG_PROXY_ERROR_LOG=/dev/stderr
+        - KONG_ADMIN_ERROR_LOG=/dev/stderr
+        - KONG_ADMIN_LISTEN=0.0.0.0:8001
+        - KONG_ADMIN_LISTEN_SSL=0.0.0.0:8444
+        command: ["./wait-for-it.sh", "kong-database:5432", "--", "kong", "start"]
+    kong-dashboard:
+        container_name: kong-dashboard
+        build:
+            context: kong-dashboard
+        depends_on:
+        - kong-database
+        ports:
+        - 8080:8080
+        command: ["./wait-for-it.sh", "kong:8001", "--", "./bin/kong-dashboard.js", "start", "--kong-url", "http://kong:8001"]
+    konga:
+        container_name: konga
+        build:
+            context: konga
+        depends_on:
+        - kong-database     
+        links:
+        - kong:kong
+        ports:
+        - 1337:1337
+        environment:
+        - NODE_ENV=production
+        command: ["./wait-for-it.sh", "kong:8001", "--", "/app/start.sh"]
