@@ -15,6 +15,7 @@ Setup Kong with GUI.
 ### Kong
 
 http://localhost:8000/
+
 http://localhost:8001/
 
 ### Kong Dashboard
@@ -26,4 +27,5 @@ http://localhost:8080/
 http://localhost:1337/
 
 Admin login: admin | password: adminadminadmin
+
 Demo user login: demo | password: demodemodemo
