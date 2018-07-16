@@ -32,11 +32,11 @@ The database is persisted on the host at `data/kong-database`.
 
 ### Kong dashboard
 
-- [http://localhost:8080](http://localhost:8080)
+[http://localhost:8080](http://localhost:8080)
 
 ### Konga
 
-- [http://localhost:1337](http://localhost:1337)
+[http://localhost:1337](http://localhost:1337)
 
 **admin login**: admin / adminadminadmin
 
