@@ -42,10 +42,3 @@ The database data is persisted at the host, in `./data/kong-database`.
 **admin user**: admin / adminadminadmin
 
 **demo user**: demo / demodemodemo
-
-
-## TODO
-
-- [host UID+GID mapper](https://github.com/asyrjasalo/rfdocker/tree/master/docker)
-to run services inside the containers as non-root, and to have `./data`
-on the host Linux distros with correct ownership.
