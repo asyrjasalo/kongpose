@@ -1,31 +1,38 @@
-# Kong 
+# Kong
 
-Setup Kong with GUI.
+Setup Kong API Gateway with PostgreSQL as its database.
+Includes both Kong Dashboard and Konga as a web UI.
+
+Requires Docker and docker-compose.
+
 
 ## Usage
 
-```
-./setup.sh
+### Migrate DB (only needed once)
 
-./start.sh
-```
+    ./migrate_db
 
-## Entrypoints
+### Run with docker-compose
+
+    docker-compose up
+
+
+## URLs
 
 ### Kong
 
-http://localhost:8000/
+Gateway: [http://localhost:8000](http://localhost:8000)
+Gateway SSL: [https://localhost:8443](https://localhost:8443)
+Admin: [http://localhost:8001](http://localhost:8001)
+Admin SSL: [https://localhost:8444](https://localhost:8444)
 
-http://localhost:8001/
+### Kong dashboard
 
-### Kong Dashboard
-
-http://localhost:8080/
+HTTP: [http://localhost:8080](http://localhost:8080)
 
 ### Konga
 
-http://localhost:1337/
+HTTP: [http://localhost:1337](http://localhost:1337)
 
 Admin login: admin | password: adminadminadmin
-
 Demo user login: demo | password: demodemodemo
