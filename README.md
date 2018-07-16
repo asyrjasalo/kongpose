@@ -3,17 +3,18 @@
 Setup Kong API Gateway with PostgreSQL as its database.
 Includes both Kong Dashboard and Konga as a web UI.
 
+Forked from [Yuan Cheung's original](https://github.com/zhangyuan/docker-compose-kong).
 
-## Usage
 
-### Initialize DB, only needed once
+## Initialize PostgreSQL for Kong
 
     ./migrate_db
 
-### Run with docker-compose
+This is only needed once. The database is stored in `./data`.
+
+## Run with docker-compose
 
     docker-compose up
-
 
 ## URLs
 
@@ -35,7 +36,6 @@ Includes both Kong Dashboard and Konga as a web UI.
 **admin user**: admin / adminadminadmin
 
 **demo user**: demo / demodemodemo
-
 
 ## TODO
 
