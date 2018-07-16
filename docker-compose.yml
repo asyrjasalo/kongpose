@@ -21,6 +21,8 @@ services:
     depends_on:
       kong-database:
         condition: service_healthy
+      kong-migration:
+        condition: service_started
     ports:
       - 8000:8000
       - 8001:8001
@@ -42,6 +44,17 @@ services:
       timeout: 5s
       retries: 5
     command: kong start
+
+  kong-migration:
+    container_name: kong-migration
+    build: ./kong
+    depends_on:
+      kong-database:
+        condition: service_healthy
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+    command: kong migrations up
 
   kong-dashboard:
     container_name: kong-dashboard
