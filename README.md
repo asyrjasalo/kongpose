@@ -1,7 +1,8 @@
 # kongpose
 
-Run Kong API Gateway with PostgreSQL as its database with docker-compose.
-Includes both [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
+Run [Kong API Gateway](https://konghq.com/kong-community-edition) using docker-compose. PostgreSQL as the database.
+
+Includes [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
 [Konga](https://github.com/pantsel/konga) as web admin UIs.
 
 Forked from [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong). The additions in this repository:
