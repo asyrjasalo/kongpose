@@ -11,7 +11,7 @@ Forked from [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/doc
 - Prefer `kong-migration` for initializing the database, rather than `setup.sh`
 - Prefer Docker's own health checks, over using `wait-for-it.sh`
 - Remove `bash` from built images, as it is not then needed
-- Tidy up `docker-compose.yml`, `links` between containers are not required
+- Tidy up `docker-compose.yml`, removed `links` as they are not mandatory here
 - Remove `start.sh` as `docker-compose restart` is a single command anyway
 
 
