@@ -1,11 +1,11 @@
 # kongpose
 
-Run [Kong API Gateway](https://konghq.com/kong-community-edition) using docker-compose. PostgreSQL as the database.
+Run [Kong API Gateway](https://konghq.com/kong-community-edition) using docker-compose, PostgreSQL 9.6 as the database and with a persistent volume.
 
-Includes [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
-[Konga](https://github.com/pantsel/konga) as web admin UIs.
+Includes both [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
+[Konga](https://github.com/pantsel/konga) as Kong web admin UIs.
 
-Forked from [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong). The additions in this repository:
+Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong) with the following additions:
 
 - Use PostgreSQL 9.6 over 9.5, and Alpine Linux based image for smaller size
 - Prefer `kong-migration` for initializing the database, rather than `setup.sh`
@@ -19,26 +19,25 @@ Forked from [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/doc
 
     docker-compose up
 
-The database data is persisted at the host, in `./data/kong-database`.
+The database is persisted on the host at `data/kong-database`.
 
 
 ## URLs
 
-### Kong
+- Proxy: [http://localhost:8000](http://localhost:8000)
+- Proxy w/ SSL: [https://localhost:8443](https://localhost:8443)
 
-- Gateway: [http://localhost:8000](http://localhost:8000)
-- Gateway SSL: [https://localhost:8443](https://localhost:8443)
 - Admin: [http://localhost:8001](http://localhost:8001)
-- Admin SSL: [https://localhost:8444](https://localhost:8444)
+- Admin w/ SSL: [https://localhost:8444](https://localhost:8444)
 
 ### Kong dashboard
 
-- Web UI: [http://localhost:8080](http://localhost:8080)
+- [http://localhost:8080](http://localhost:8080)
 
 ### Konga
 
-- Web UI: [http://localhost:1337](http://localhost:1337)
+- [http://localhost:1337](http://localhost:1337)
 
-**admin user**: admin / adminadminadmin
+**admin login**: admin / adminadminadmin
 
-**demo user**: demo / demodemodemo
+**demo login**: demo / demodemodemo
