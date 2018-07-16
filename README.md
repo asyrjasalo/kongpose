@@ -2,6 +2,7 @@
 
 Run [Kong API Gateway](https://konghq.com/kong-community-edition) dev setup
 with docker-compose. PostgreSQL 9.6 as the database, with a persistent volume.
+
 Includes both [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
 [Konga](https://github.com/pantsel/konga) as web admin UIs.
 
