@@ -3,12 +3,10 @@
 Setup Kong API Gateway with PostgreSQL as its database.
 Includes both Kong Dashboard and Konga as a web UI.
 
-Requires Docker and docker-compose.
-
 
 ## Usage
 
-### Migrate DB (only needed once)
+### Initialize DB, only needed once
 
     ./migrate_db
 
@@ -37,3 +35,8 @@ Requires Docker and docker-compose.
 **admin user**: admin / adminadminadmin
 
 **demo user**: demo / demodemodemo
+
+
+## TODO
+
+- Add [UID-GID-mapper](https://github.com/asyrjasalo/rfdocker/tree/master/docker) to run as non-root (and have `./data` with correct permissions)
