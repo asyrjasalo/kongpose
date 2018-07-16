@@ -27,8 +27,8 @@ The database is persisted on the host at `data/kong-database`.
 - Proxy: [http://localhost:8000](http://localhost:8000)
 - Proxy w/ SSL: [https://localhost:8443](https://localhost:8443)
 
-- Admin: [http://localhost:8001](http://localhost:8001)
-- Admin w/ SSL: [https://localhost:8444](https://localhost:8444)
+- Admin API: [http://localhost:8001](http://localhost:8001)
+- Admin API w/ SSL: [https://localhost:8444](https://localhost:8444)
 
 ### Kong dashboard
 
