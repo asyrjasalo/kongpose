@@ -22,7 +22,7 @@ Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker
 The database is persisted on the host at `data/kong-database`.
 
 
-## URLs
+## Endpoints
 
 - Proxy: [http://localhost:8000](http://localhost:8000)
 - Proxy w/ SSL: [https://localhost:8443](https://localhost:8443)
@@ -30,11 +30,13 @@ The database is persisted on the host at `data/kong-database`.
 - Admin API: [http://localhost:8001](http://localhost:8001)
 - Admin API w/ SSL: [https://localhost:8444](https://localhost:8444)
 
-### Kong dashboard
+
+## Kong dashboard
 
 [http://localhost:8080](http://localhost:8080)
 
-### Konga
+
+## Konga
 
 [http://localhost:1337](http://localhost:1337)
 
