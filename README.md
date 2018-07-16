@@ -1,22 +1,24 @@
 # docker-compose-kong
 
 Run Kong API Gateway with PostgreSQL as its database.
-Includes both Kong Dashboard and Konga as a web UI.
+Includes both [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
+[Konga](https://github.com/pantsel/konga) as web admin UIs.
 
-Forked from [Yuan Cheung's original](https://github.com/zhangyuan/docker-compose-kong). Additions in this repository:
+Forked from [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong). The additions in this repository:
 
-- Use PostgreSQL 9.6 over 9.5, and use the Alpine Linux based image for size
+- Use PostgreSQL 9.6 over 9.5, and Alpine Linux based image for smaller size
 - Prefer `kong-migration` for initializing the database, rather than `setup.sh`
-- Prefer Docker's own health checks over using `wait-for-it.sh`
-- Tidy up `docker-compose.yml`: `links` between containers are not required
-- Remove `start.sh`, as using `docker-compose up/restart` is one command anyway
+- Prefer Docker's own health checks, over using `wait-for-it.sh`
+- Remove `bash` from built images, as it is not then needed
+- Tidy up `docker-compose.yml`, `links` between containers are not required
+- Remove `start.sh` as `docker-compose restart` is a single command anyway
 
 
 ## Usage
 
-    docker-compose up -d
+    docker-compose up
 
-The database data is persisted the host, via a volume in `./data/kong-database`.
+The database data is persisted at the host, in `./data/kong-database`.
 
 
 ## URLs
@@ -40,6 +42,9 @@ The database data is persisted the host, via a volume in `./data/kong-database`.
 
 **demo user**: demo / demodemodemo
 
+
 ## TODO
 
-- Add [UID-GID-mapper](https://github.com/asyrjasalo/rfdocker/tree/master/docker) to run as non-root (and have `./data` with correct permissions)
+- [host UID+GID mapper](https://github.com/asyrjasalo/rfdocker/tree/master/docker)
+to run services inside the containers as non-root, and to have `./data`
+on the host Linux distros with correct ownership.
