@@ -14,7 +14,7 @@ This is only needed once. The database is stored in `./data`.
 
 ## Run with docker-compose
 
-    docker-compose up
+    docker-compose up -d
 
 ## URLs
 
