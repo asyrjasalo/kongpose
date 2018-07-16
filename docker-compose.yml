@@ -3,7 +3,7 @@ version: '2.1'
 services:
   kong-database:
     container_name: kong-database
-    image: postgres:9.5
+    image: postgres:9.6.9-alpine
     environment:
       - POSTGRES_USER=kong
       - POSTGRES_DB=kong
