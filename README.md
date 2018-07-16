@@ -3,9 +3,9 @@
 Run [Kong API Gateway](https://konghq.com/kong-community-edition) using docker-compose, PostgreSQL 9.6 as the database and with a persistent volume.
 
 Includes both [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
-[Konga](https://github.com/pantsel/konga) as Kong web admin UIs.
+[Konga](https://github.com/pantsel/konga) as web admin UIs.
 
-Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong) with the following additions:
+Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong), with the following additions:
 
 - Use PostgreSQL 9.6 over 9.5, and Alpine Linux based image for smaller size
 - Prefer `kong-migration` for initializing the database, rather than `setup.sh`
