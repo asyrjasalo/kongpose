@@ -10,7 +10,7 @@ services:
     volumes:
       - ./data/kong-database:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U kong"]
+      test: pg_isready -U kong
       interval: 10s
       timeout: 5s
       retries: 5
@@ -38,7 +38,7 @@ services:
       - KONG_ADMIN_LISTEN=0.0.0.0:8001
       - KONG_ADMIN_LISTEN_SSL=0.0.0.0:8444
     healthcheck:
-      test: "kong health"
+      test: kong health
       interval: 10s
       timeout: 5s
       retries: 5
