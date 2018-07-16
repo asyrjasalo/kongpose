@@ -64,7 +64,8 @@ services:
         condition: service_healthy
     ports:
       - 8080:8080
-    command: bin/kong-dashboard.js start --kong-url http://kong:8001
+    entrypoint: bin/kong-dashboard.js
+    command: start --kong-url http://kong:8001
 
   konga:
     container_name: konga
