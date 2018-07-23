@@ -61,6 +61,11 @@ services:
       - konga_data:/data/db
     ports:
       - 27017:27017
+    healthcheck:
+      test: echo 'db.stats().ok' | mongo localhost:27017/konga --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   konga:
     build: ./konga
