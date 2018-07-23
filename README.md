@@ -32,7 +32,7 @@ Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker
 
 ## Kong dashboard
 
-[http://localhost:8080](http://localhost:8080)
+[http://localhost:1336](http://localhost:1336)
 
 
 ## Konga
