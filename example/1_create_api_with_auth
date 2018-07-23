@@ -14,7 +14,8 @@ create_service() {
   curl -i -X POST \
     --url "$KONG_ADMIN_URL/services" \
     --data "name=$API_NAME" \
-    --data "url=$API_URL"
+    --data "url=$API_URL" \
+    --data "protocol=https"
 }
 
 create_route() {
