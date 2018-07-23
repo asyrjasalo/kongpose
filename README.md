@@ -16,14 +16,14 @@ Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker
 - Remove `start.sh` as `docker-compose restart` is a single command anyway
 - Add MongoDB for storing Konga users
 - Improve healthchecks for checking if database migrations have ran
-- Add [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/kong)
+- Add [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/example)
 
 
 ## Usage
 
     docker-compose up
 
-See [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/kong)
+See [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/example)
 
 
 ## Endpoints
