@@ -1,7 +1,7 @@
 # kongpose
 
 Run [Kong API Gateway](https://konghq.com/kong-community-edition) dev setup
-with docker-compose. PostgreSQL 9.6 as the database, with a persistent volume.
+with docker-compose. PostgreSQL 9.6 as the database with a Docker volume.
 
 Includes both [Kong Dashboard](https://github.com/PGBI/kong-dashboard) and
 [Konga](https://github.com/pantsel/konga) as web admin UIs.
@@ -19,8 +19,6 @@ Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker
 ## Usage
 
     docker-compose up
-
-The database is persisted on the host at `data/kong-database`.
 
 
 ## Endpoints
@@ -44,3 +42,5 @@ The database is persisted on the host at `data/kong-database`.
 **admin login**: admin / adminadminadmin
 
 **demo login**: demo / demodemodemo
+
+Konga uses MongoDB for storing its credentials.

@@ -2,32 +2,38 @@ version: '2.1'
 
 services:
   kong-database:
+    image: postgres:9.6.2-alpine
     container_name: kong-database
-    image: postgres:9.6.9-alpine
+    volumes:
+      - kong_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=kong
       - POSTGRES_DB=kong
-    volumes:
-      - ./data/kong-database:/var/lib/postgresql/data
     healthcheck:
-      test: pg_isready -U kong
+      test: pg_isready -U kong && psql -d kong -U kong -c "SELECT 1=1"
       interval: 10s
-      timeout: 10s
+      timeout: 5s
       retries: 5
 
+  kong-migration:
+    image: kong:0.13.1
+    container_name: kong-migration
+    depends_on:
+      kong-database:
+        condition: service_healthy
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+    command: kong migrations up
+
   kong:
-    container_name: kong
     build: ./kong
+    container_name: kong
     depends_on:
       kong-database:
         condition: service_healthy
       kong-migration:
         condition: service_started
-    ports:
-      - 8000:8000
-      - 8001:8001
-      - 8443:8443
-      - 8444:8444
     environment:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=kong-database
@@ -37,43 +43,50 @@ services:
       - KONG_ADMIN_ERROR_LOG=/dev/stderr
       - KONG_ADMIN_LISTEN=0.0.0.0:8001
       - KONG_ADMIN_LISTEN_SSL=0.0.0.0:8444
+    ports:
+      - 8000:8000
+      - 8001:8001
+      - 8443:8443
+      - 8444:8444
     healthcheck:
       test: kong health
       interval: 10s
-      timeout: 10s
+      timeout: 5s
       retries: 5
-    command: kong start
 
-  kong-migration:
-    container_name: kong-migration
-    build: ./kong
-    depends_on:
-      kong-database:
-        condition: service_healthy
-    environment:
-      - KONG_DATABASE=postgres
-      - KONG_PG_HOST=kong-database
-    command: kong migrations up
-
-  kong-dashboard:
-    container_name: kong-dashboard
-    build: ./kong-dashboard
-    depends_on:
-      kong:
-        condition: service_healthy
+  konga-database:
+    image: mongo
+    container_name: konga-database
+    volumes:
+      - konga_data:/data/db
     ports:
-      - 8080:8080
-    entrypoint: bin/kong-dashboard.js
-    command: start --kong-url http://kong:8001
+      - 27017:27017
 
   konga:
-    container_name: konga
     build: ./konga
+    container_name: konga
     depends_on:
       kong-database:
         condition: service_healthy
     ports:
       - 1337:1337
     environment:
+      - DB_ADAPTER=mongo
+      - DB_DATABASE=konga
+      - DB_HOST=konga-database
       - NODE_ENV=production
-    command: app/start.sh
+
+  kong-dashboard:
+    build: ./kong-dashboard
+    container_name: kong-dashboard
+    depends_on:
+      kong:
+        condition: service_healthy
+    ports:
+      - 1336:8080
+    entrypoint: bin/kong-dashboard.js
+    command: start --kong-url http://kong:8001
+
+volumes:
+  kong_data:
+  konga_data:
