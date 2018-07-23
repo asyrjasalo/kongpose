@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+### configuration ##############################################################
+
+: ${URL:="http://localhost:8000"}
+: ${API_SECRET:=""}
+
+### main #######################################################################
+
+curl -i -X GET \
+  --url "$URL" \
+  --header "apikey: $API_SECRET"

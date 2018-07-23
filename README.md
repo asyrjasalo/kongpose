@@ -14,14 +14,21 @@ Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker
 - Remove `bash` from built images, as it is not then needed
 - Tidy up `docker-compose.yml`, removed `links` as they are not mandatory here
 - Remove `start.sh` as `docker-compose restart` is a single command anyway
+- Add MongoDB for storing Konga users
+- Improve healthchecks for checking if database migrations have ran
+- Add [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/kong)
 
 
 ## Usage
 
     docker-compose up
 
+See [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/kong)
+
 
 ## Endpoints
+
+### Kong
 
 - Proxy: [http://localhost:8000](http://localhost:8000)
 - Proxy w/ SSL: [https://localhost:8443](https://localhost:8443)
@@ -30,12 +37,12 @@ Based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker
 - Admin API w/ SSL: [https://localhost:8444](https://localhost:8444)
 
 
-## Kong dashboard
+### Kong dashboard
 
 [http://localhost:1336](http://localhost:1336)
 
 
-## Konga
+### Konga
 
 [http://localhost:1337](http://localhost:1337)
 
