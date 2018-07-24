@@ -87,17 +87,6 @@ services:
       - NODE_ENV=production
     restart: on-failure
 
-  kong-dashboard:
-    build: ./kong-dashboard
-    container_name: kong-dashboard
-    depends_on:
-      kong:
-        condition: service_healthy
-    ports:
-      - 1336:8080
-    entrypoint: bin/kong-dashboard.js
-    command: start --kong-url http://kong:8001
-
 volumes:
   kong_data:
   konga_data:

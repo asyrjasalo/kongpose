@@ -1,1 +1,0 @@
-FROM pgbi/kong-dashboard
