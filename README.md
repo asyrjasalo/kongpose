@@ -37,7 +37,7 @@ See [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/mas
 - Admin API: [http://localhost:8001](http://localhost:8001)
 - Admin API w/ SSL: [https://localhost:8444](https://localhost:8444)
 
-Kong uses PostgreSQL (9.6) with a peristent volume for storing its credentials.
+Kong uses PostgreSQL (9.6) with a persistent Docker volume for its credentials.
 
 ### Konga
 
@@ -47,4 +47,4 @@ Kong uses PostgreSQL (9.6) with a peristent volume for storing its credentials.
 
 **demo login**: demo / demodemodemo
 
-Konga uses MongoDB with a peristent volume for storing its credentials.
+Konga uses MongoDB (4.0) with a persistent Docker volume for its credentials.
