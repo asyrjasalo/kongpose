@@ -1,1 +1,1 @@
-FROM kong:0.13.1-alpine
+FROM kong:0.14.0-alpine
