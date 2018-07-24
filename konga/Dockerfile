@@ -1,1 +1,1 @@
-FROM pantsel/konga
+FROM pantsel/konga:latest
