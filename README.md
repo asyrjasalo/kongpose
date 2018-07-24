@@ -47,4 +47,6 @@ Kong uses PostgreSQL (9.6) with a persistent Docker volume for its credentials.
 
 **demo login**: demo / demodemodemo
 
+After logging in as admin, create a new connection with URL `http://kong:8001`.
+
 Konga uses MongoDB (4.0) with a persistent Docker volume for its credentials.
