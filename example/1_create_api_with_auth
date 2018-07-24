@@ -11,9 +11,8 @@ set -e
 ### helpers ####################################################################
 
 create_service() {
-  curl -i -X POST \
-    --url "$KONG_ADMIN_URL/services" \
-    --data "name=$API_NAME" \
+  curl -i -X PUT \
+    --url "$KONG_ADMIN_URL/services/$API_NAME" \
     --data "url=$API_URL"
 }
 
@@ -25,7 +24,7 @@ create_route() {
 }
 
 create_plugin_for_auth() {
-  curl -i -X POST \
+  curl -i -X PUT \
     --url "$KONG_ADMIN_URL/services/$API_NAME/plugins" \
     --data "name=key-auth"
 }
