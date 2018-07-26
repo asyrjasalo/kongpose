@@ -5,10 +5,10 @@ set -u
 
 ### configuration ##############################################################
 
-: ${URL:="https://localhost:8443"}
+: ${API_URL:="https://localhost:8443"}
 
 ### main #######################################################################
 
 curl -i -k -X GET \
-  --url "$URL" \
+  --url "$API_URL" \
   --header "apikey: $API_SECRET"
