@@ -44,9 +44,9 @@ Kong uses PostgreSQL (9.6) with a persistent Docker volume for its credentials.
 
 - Admin UI: [http://localhost:1337](http://localhost:1337)
 
-**admin login**: admin / adminadminadmin
-
-**demo login**: demo / demodemodemo
+The following default users are configured in `konga/user_seed.js`:
+- admin / adminadminadmin
+- demo / demodemodemo
 
 After logging in as admin, create a new connection with URL `http://kong:8001`.
 

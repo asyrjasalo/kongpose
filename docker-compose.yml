@@ -89,6 +89,8 @@ services:
     depends_on:
       konga-database:
         condition: service_healthy
+    volumes:
+      - ./konga/user_seed.js:/app/user_seed.js
     ports:
       - 1337:1337
     environment:
@@ -96,6 +98,7 @@ services:
       - DB_DATABASE=konga
       - DB_HOST=konga-database
       - NODE_ENV=production
+      - KONGA_SEED_USER_DATA_SOURCE_FILE=/app/user_seed.js
     restart: on-failure
 
 volumes:
