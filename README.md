@@ -17,7 +17,8 @@ Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhang
 - Improve healthchecks for checking if database migrations have ran
 - Add [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/example)
 - Upgrade Kong to 0.14.1
-- Remove legacy Kong Dashboard, as it does not fully support >= 0.13
+- Upgrade Kong Dashboard to latest, to support Kong >= 0.13
+  - though commented out in `docker-compose.yml` as Konga is enough
 
 
 ## Usage

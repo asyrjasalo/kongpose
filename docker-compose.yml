@@ -72,6 +72,17 @@ services:
       timeout: 5s
       retries: 5
 
+#  kong-dashboard:
+#    build: ./kong-dashboard
+#    container_name: kong-dashboard
+#    depends_on:
+#      kong:
+#        condition: service_healthy
+#    command: start --kong-url http://kong:8001
+#    ports:
+#      - 8080:8080
+#    restart: on-failure
+
   konga:
     build: ./konga
     container_name: konga
