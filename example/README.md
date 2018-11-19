@@ -14,6 +14,10 @@ Then key for the Kong Admin API consumer:
 
     kong --yaml kongadmin.yaml --key-auth root
 
+To test the created service:
+
+    ADMIN_CONSUMER_SECRET=<key_from_previous_output> ./test_kongadmin_with_auth
+
 ## Example service for Mockbin
 
 Create the example service for [Mockbin](https://mockbin.org):
@@ -26,4 +30,4 @@ Then key for the created consumer:
 
 To test the created service:
 
-    MOCKBIN_USER_SECRET=<keyfromthepreviousoutput> ./test_mockbin_with_auth
+    MOCKBIN_CONSUMER_SECRET=<key_from_previous_output> ./test_mockbin_with_auth

@@ -7,7 +7,7 @@ services:
   - name: kongadmin
     url: http://kong:8001
     routes:
-      - paths: /admin
+      - paths: /kongadmin
     plugins:
       - name: key-auth
         config:

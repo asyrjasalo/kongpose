@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -u
+
+: ${KONGADMIN_SERVICE_URL:="https://localhost:8443/kongadmin"}
+
+curl -i -k -X GET \
+  --url "$KONGADMIN_SERVICE_URL" \
+  --header "apikey: $ADMIN_CONSUMER_SECRET"

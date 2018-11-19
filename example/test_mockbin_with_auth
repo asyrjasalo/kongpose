@@ -6,4 +6,5 @@ set -u
 
 curl -i -k -X GET \
   --url "$MOCKBIN_SERVICE_URL" \
-  --header "apikey: $MOCKBIN_USER_SECRET"
+  --header "apikey: $MOCKBIN_CONSUMER_SECRET"
+s
