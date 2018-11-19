@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -u
+
+: ${MOCKBIN_SERVICE_URL:="https://localhost:8443"}
+
+curl -i -k -X GET \
+  --url "$MOCKBIN_SERVICE_URL" \
+  --header "apikey: $MOCKBIN_USER_SECRET"

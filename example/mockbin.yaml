@@ -1,0 +1,26 @@
+consumers:
+  - username: mockbinuser
+    groups:
+      - users
+
+services:
+  - name: mockbin
+    url: https://mockbin.org
+    plugins:
+      - name: rate-limiting
+        config:
+          minute: 10
+    routes:
+      - paths: /
+        strip_path: false
+        protocols:
+          - https
+        plugins:
+          - name: key-auth
+            config:
+              hide_credentials: true
+              key_names: apikey
+          - name: acl
+            config:
+              whitelist:
+                - users

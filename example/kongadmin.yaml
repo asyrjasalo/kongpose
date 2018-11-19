@@ -1,0 +1,18 @@
+consumers:
+  - username: root
+    groups:
+      - admins
+
+services:
+  - name: kongadmin
+    url: http://kong:8001
+    routes:
+      - paths: /admin
+    plugins:
+      - name: key-auth
+        config:
+          hide_credentials: true
+      - name: acl
+        config:
+          whitelist:
+            - admins
