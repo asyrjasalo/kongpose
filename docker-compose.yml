@@ -90,15 +90,15 @@ services:
       konga-database:
         condition: service_healthy
     volumes:
-      - ./konga/user_seed.js:/app/user_seed.js
+      - ./konga/user_seed.js:/app/user_seed.js:ro
     ports:
       - 1337:1337
     environment:
       - DB_ADAPTER=mongo
       - DB_DATABASE=konga
       - DB_HOST=konga-database
-      - NODE_ENV=production
       - KONGA_SEED_USER_DATA_SOURCE_FILE=/app/user_seed.js
+      - NODE_ENV=production
     restart: on-failure
 
 volumes:
