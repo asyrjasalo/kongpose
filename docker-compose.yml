@@ -60,7 +60,7 @@ services:
       retries: 5
 
   konga-database:
-    image: mongo:4
+    image: mongo:4.1.5
     container_name: konga-database
     volumes:
       - konga_data:/data/db
