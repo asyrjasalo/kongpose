@@ -7,6 +7,8 @@ Includes [Konga](https://github.com/pantsel/konga) as the web admin UI.
 
 Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong), with the following additions:
 
+- Add [declarative configuration examples](https://github.com/asyrjasalo/kongpose/tree/master/example)
+  - Includes securing [Kong Admin API](https://docs.konghq.com/0.14.x/secure-admin-api/#kong-api-loopback)
 - Use PostgreSQL 9.6 over 9.5, and Alpine Linux based image for smaller size
 - Prefer `kong-migration` for initializing the database, rather than `setup.sh`
 - Prefer Docker's own health checks, over using `wait-for-it.sh`
@@ -15,7 +17,6 @@ Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhang
 - Remove `start.sh` as `docker-compose restart` is a single command anyway
 - Add MongoDB for storing Konga users
 - Improve healthchecks for checking if database migrations have ran
-- Add [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/example)
 - Upgrade Kong to 0.14.1
 - Upgrade Kong Dashboard to latest, to support Kong >= 0.13
   - though commented out in `docker-compose.yml` as Konga is enough
