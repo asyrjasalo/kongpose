@@ -1,7 +1,7 @@
 consumers:
-  - username: mockbinuser
+  - username: mocker
     groups:
-      - users
+      - mockers
 
 services:
   - name: mockbin
@@ -14,6 +14,7 @@ services:
       - paths: /
         strip_path: false
         protocols:
+          - http
           - https
         plugins:
           - name: key-auth
@@ -23,4 +24,4 @@ services:
           - name: acl
             config:
               whitelist:
-                - users
+                - mockers

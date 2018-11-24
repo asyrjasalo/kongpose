@@ -1,33 +1,45 @@
-# Setup Kong APIs using declarative configuration
+# Manage Kong resources with yaml
 
-Install [aio-kong](https://github.com/lendingblock/aio-kong) (requires Python >=3.6):
+## Python >= 3.6 CLI
 
-    pip install --user --upgrade aio-kong==0.4.0
+Install [kong-incubator](https://pypi.org/project/kong-incubator):
 
-## Loopback service for Kong Admin API
+pip install --upgrade kong-incubator
 
-Create [a loopback service for Kong Admin API](https://docs.konghq.com/0.14.x/secure-admin-api/#kong-api-loopback):
+## mockbin.yaml
 
-    kong --yaml kongadmin.yaml
+Create or upgrade [Mockbin](http://mockbin.org) proxy:
 
-Then key for the Kong Admin API consumer:
+    kong-incubator --yaml mockbin.yaml
 
-    kong --yaml kongadmin.yaml --key-auth root
+Generate a random `key` for the consumer:
 
-To test the created service:
+    export MOCKBIN_MOCKER_KEY=$(kong-incubator --key-auth mocker --output key)
+    echo $MOCKBIN_MOCKER_KEY
 
-    ADMIN_CONSUMER_SECRET=<key_from_previous_output> ./test_kongadmin_with_auth
+Use via HTTPS (also HTTP works):
 
-## Example service for Mockbin
+    curl -i -k -X GET \
+        https://localhost:8443/bin/bbe7f656-12d6-4877-9fa8-5cd61f9522a9/view \
+        --header "apikey: $MOCKBIN_MOCKER_KEY"
 
-Create the example service for [Mockbin](https://mockbin.org):
+## kadmin.yaml
 
-    kong --yaml mockbin.yaml
+This creates [Kong Admin API Loopback](https://docs.konghq.com/0.14.x/secure-admin-api/#kong-api-loopback).
 
-Then key for the created consumer:
+Create the resources and get the `key` for admin:
 
-    kong --yaml mockbin.yaml --key-auth mockbinuser
+    kong-incubator --yaml kadmin.yaml
+    export KONG_ADMIN_KEY=$(kong-incubator --key-auth root --output key)
+    echo $KONG_ADMIN_KEY
 
-To test the created service:
+Use Kong Admin API from now on:
 
-    MOCKBIN_CONSUMER_SECRET=<key_from_previous_output> ./test_mockbin_with_auth
+    export KONG_ADMIN_URL=http://localhost:8000/kadmin
+    kong-incubator --yaml ..
+
+Use Kong Admin only via authenticated HTTPS endpoint from now on:
+
+    curl -i -k -X GET \
+        https://localhost:8443/kadmin/services/mockbin \
+        --header "apikey: $KONG_ADMIN_KEY"
