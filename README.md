@@ -2,8 +2,7 @@
 
 Run [Kong API Gateway, Community Edition](https://konghq.com/kong-community-edition)
 development setup with [docker-compose](https://docs.docker.com/compose).
-
-Includes [Konga](https://github.com/pantsel/konga) as the web admin UI.
+Includes [Konga](https://github.com/pantsel/konga) as admin webapp.
 
 Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong), with the following additions:
 
@@ -26,7 +25,7 @@ Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhang
 
     docker-compose up
 
-See [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/master/example)
+See [examples of managing APIs with YAML](https://github.com/asyrjasalo/kongpose/tree/master/example).
 
 
 ## Endpoints
@@ -35,15 +34,13 @@ See [example of creating an API](https://github.com/asyrjasalo/kongpose/tree/mas
 
 - Proxy: [http://localhost:8000](http://localhost:8000)
 - Proxy w/ SSL: [https://localhost:8443](https://localhost:8443)
-
 - Admin API: [http://localhost:8001](http://localhost:8001)
-- Admin API w/ SSL: [https://localhost:8444](https://localhost:8444)
 
 Kong uses PostgreSQL (9.6) with a persistent Docker volume for its credentials.
 
 ### Konga
 
-- Admin UI: [http://localhost:1337](http://localhost:1337)
+- GUI: [http://localhost:1337](http://localhost:1337)
 
 The following default users are configured in `konga/user_seed.js`:
 - admin / adminadminadmin
@@ -51,4 +48,4 @@ The following default users are configured in `konga/user_seed.js`:
 
 After logging in as admin, create a new connection with URL `http://kong:8001`.
 
-Konga uses MongoDB (4.0) with a persistent Docker volume for its credentials.
+Konga uses MongoDB (4.1) with a persistent Docker volume for its credentials.
