@@ -1,10 +1,10 @@
 # Manage Kong resources with yaml
 
-## Python >= 3.6 CLI
+## Python >= 3.6
 
 Install [kong-incubator](https://pypi.org/project/kong-incubator):
 
-pip install --upgrade kong-incubator
+    pip install --upgrade kong-incubator
 
 ## mockbin.yaml
 
