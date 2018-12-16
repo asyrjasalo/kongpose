@@ -16,7 +16,7 @@ Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhang
 - Remove `start.sh` as `docker-compose restart` is a single command anyway
 - Add MongoDB for storing Konga users
 - Improve healthchecks for checking if database migrations have ran
-- Upgrade Kong to 1.0.0rc2
+- Upgrade Kong to 1.0.0rc4, use Alpine Linux based image for smaller size
 - Upgrade Kong Dashboard to latest, to support Kong >= 0.13
   - though commented out in `docker-compose.yml` as Konga is enough
 
