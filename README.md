@@ -6,7 +6,7 @@ Includes [Konga](https://github.com/pantsel/konga) as admin webapp.
 
 Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhangyuan/docker-compose-kong), with the following additions:
 
-- Add [declarative configuration examples](https://github.com/asyrjasalo/kongpose/tree/master/example)
+- Add [declarative configuration examples](https://github.com/asyrjasalo/kongpose/tree/master/examples)
   - Includes securing [Kong Admin API](https://docs.konghq.com/0.14.x/secure-admin-api/#kong-api-loopback)
 - Use PostgreSQL 9.6 over 9.5, and Alpine Linux based image for smaller size
 - Prefer `kong-migration` for initializing the database, rather than `setup.sh`
@@ -25,7 +25,7 @@ Originally based on [Yuan Cheung's docker-compose-kong](https://github.com/zhang
 
     docker-compose up
 
-See [examples of managing APIs with YAML](https://github.com/asyrjasalo/kongpose/tree/master/example).
+See [examples of managing APIs with YAML](https://github.com/asyrjasalo/kongpose/tree/master/examples).
 
 
 ## Endpoints
