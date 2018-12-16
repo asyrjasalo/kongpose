@@ -71,7 +71,7 @@ services:
       retries: 5
 
 #  kong-dashboard:
-#    build: ./kong-dashboard
+#    image: pgbi/kong-dashboard:v3
 #    container_name: kong-dashboard
 #    depends_on:
 #      kong:
